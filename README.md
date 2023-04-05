@@ -1,2 +1,5 @@
 # Harshi-Hitest---Shadow-Project
-Shadow Project for banking use case
+Implementation of banking application with CRUD operation.
+Frontend - Angular
+Backend - Sts (Springboot)
+Database - Sql
