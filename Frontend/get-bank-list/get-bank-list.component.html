@@ -1,0 +1,71 @@
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead class="table-light">
+            <tr>
+                <th class="table-primary">Bank ID</th>
+                <th class="table-primary">Bank Type</th>
+                <th class="table-primary">Account Number</th>
+                <th class="table-primary">Account type</th>
+                <th class="table-primary">Account Owner Name</th>
+                <th class="table-primary">Nickname</th>
+                
+                <th class="table-primary">Primary Bank</th>
+                <th class="table-primary">Status</th>
+                <th class="table-primary">Authetication Method</th>
+                <th class="table-primary">Transaction Type</th>
+                <th class="table-primary">Communication Channel</th>
+                <th class="table-primary" colspan="2" >ACTION</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let bank of banks">
+                <td>{{bank.bankId}}</td>
+                <td>{{bank.bankType}}</td>
+                <td>{{bank.accountNumber}}</td>
+                <td>{{bank.accountType}}</td>
+                <td>{{bank.accountOwnerName}}</td>
+                <td>{{bank.nickname}}</td>
+                <td>{{bank.primaryBank}}</td>
+                <td>{{bank.status}}</td>
+                <td>{{bank.authenticationMethod}}</td>
+                <td>{{bank.transactionType}}</td>
+                <td>{{bank.communicationChannel}}</td>
+                <td> <button type="button" class="btn btn-outline-success btn-rounded" mdbRipple rippleColor="dark"(click)="editBank(bank)">EDIT</button></td>
+                <td> <button type="button" class="btn btn-outline-danger btn-rounded" mdbRipple rippleColor="dark" (click)="deleteBank(bank.bankId)">DELETE</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- <hr class="border border-2 opacity-100" style=background-color:blanchedalmond>     -->
+</div>
+
+<div class="in float-end">
+    <ul class="nav nav-pills">
+        <li class="nav-item" *ngFor="let p of pages; let i = index">
+            <a class="nav-link" href="" (click)="setPage(i,$event)" [ngClass]="{'active':i==page}">{{i + 1}}</a>
+        </li>
+    </ul>
+</div>
+<div class="container">
+    <div class="in ms-10">
+        <button type="button" class="btn btn-warning btn-rounded">Item Per Page
+        <select (change)="handlePageSizeChange($event)">
+            <option *ngFor="let size of pageSizes" [ngValue]="size">
+                {{ size }}
+            </option>
+        </select>
+        </button>
+    </div>
+    <div class="in ms-5">
+        <button type="button" class="btn btn-warning btn-rounded">Sort By
+        
+        <select (change)="handleSortChange($event)">
+            <option value="bankId">Bank ID</option>
+            <option value="accountOwnerName">Name</option>
+            <option value="status">Account Status</option>
+        </select>
+    </button>
+    </div>
+
+
+</div>

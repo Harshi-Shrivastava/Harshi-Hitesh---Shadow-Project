@@ -1,0 +1,7 @@
+<div *ngIf="errorMessage">
+<p class="alert alert-danger h4 text-center mt-3">{{errorMessage}}</p>
+</div>
+<div *ngIf="flag" class="alert alert-warning alert-dismissible fade show" role="alert">
+<strong class="text-success">{{message}}</strong>
+<button type="button" (click)="accounts()" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>

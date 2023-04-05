@@ -1,0 +1,129 @@
+<p class="h2 text-center btn-warning">{{title}}</p>
+<div class="container">
+  <!-- <div *ngIf="!errorMessage; else error"> -->
+    
+    <form [formGroup]="bankForm" (ngSubmit)="submitData(bankForm.value)">
+<div class="row">
+  <div class="col">
+
+      <div class="form-group m-3">
+        <label for="bankType">Enter Bank Type : </label>
+        <input type="text" class="form-control " formControlName="bankType"
+          [class.is-invalid]="controls.bankType.touched && controls.bankType.invalid">
+      </div>
+      <div *ngIf="controls.bankType.touched && controls.bankType.invalid">
+        <small class="text-danger" *ngIf="controls.bankType.errors?.['required']">Bank Type Required!!!</small>
+      </div>
+</div>
+<div class="col">
+
+      <div class="form-group m-3">
+        <label for="accountNumber">Enter Account Number : </label>
+        <input type="text" class="form-control " formControlName="accountNumber"
+          [class.is-invalid]="controls.accountNumber.touched && controls.accountNumber.invalid">
+      </div>
+      <div *ngIf="controls.accountNumber.touched && controls.accountNumber.invalid">
+        <small class="text-danger" *ngIf="controls.accountNumber.errors?.['max']">Account Number should not be more than 16
+          characters</small>
+        <small class="text-danger" *ngIf="controls.accountNumber.errors?.['required']">Account Number
+          Required!!!</small>
+        <small class="text-danger" *ngIf="controls.accountNumber.errors?.['pattern']">Account Number
+          can only contain numbers and alphabets</small>
+        <small class="text-danger" *ngIf="controls.accountNumber.errors?.['maxlength']">Maximum 16 character allowed</small>
+      </div>
+      </div>
+</div>
+<div class="row">
+  <div class="col">
+      <div class="form-group m-3">
+        <label for="accountType">Enter Account Type : </label>
+        <input type="text" class="form-control " formControlName="accountType"
+          [class.is-invalid]="controls.accountType.touched && controls.accountType.invalid">
+      </div>
+      <div *ngIf="controls.accountType.touched && controls.accountType.invalid">
+        <small class="text-danger" *ngIf="controls.accountType.errors?.['required']">Account Type Required!!!</small>
+      </div>
+</div>
+<div class="col">
+
+      <div class="form-group m-3">
+        <label for="accountOwnername">Enter Your Name : </label>
+        <input type="text" class="form-control " formControlName="accountOwnerName"
+          [class.is-invalid]="controls.accountOwnerName.touched && controls.accountOwnerName.invalid">
+      </div>
+      <div *ngIf="controls.accountOwnerName.touched && controls.accountOwnerName.invalid">
+        <small class="text-danger" *ngIf="controls.accountOwnerName.errors?.['required']">Name
+          Required!!!</small>
+        <small class="text-danger" *ngIf="controls.accountOwnerName.errors?.['pattern']">Name should not 
+          contain any special symbols or numbers
+        </small>
+      </div>
+      </div>
+      </div>
+<div class="row">
+  <div class="col">
+      <div class="form-group m-3">
+        <label for="nickname">Enter Your Nickname : </label>
+        <input type="text" class="form-control " formControlName="nickname">
+      </div>
+</div>
+<div class="col">
+
+      <div class="form-group m-3">
+        Primary Bank:<br>
+        True: <input type="radio" id="radio" class="form-check-input" formControlName="primaryBank" value="True"><br>
+        False: <input type="radio" id="radio2" class="form-check-input" formControlName="primaryBank" value="False">
+      </div>
+</div>
+</div>
+<div class="row">
+  <div class="col">
+      <div class="form-group m-3">
+        <label for="status">Enter Status : </label>
+        <input type="text" class="form-control " formControlName="status"
+          [class.is-invalid]="controls.status.touched && controls.status.invalid">
+      </div>
+      <div *ngIf="controls.status.touched && controls.status.invalid">
+        <small class="text-danger" *ngIf="controls.status.errors?.['required']">Status Required!!!</small>
+      </div>
+</div>
+<div class="col">
+      <div class="form-group m-3">
+        <label for="authenticationMethod">Enter Authentication Method : </label>
+        <input type="text" class="form-control " formControlName="authenticationMethod">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+
+      <div class="form-group m-3">
+        <label for="transactionType">Enter Transaction Type : </label>
+        <input type="text" class="form-control " formControlName="transactionType"
+          [class.is-invalid]="controls.transactionType.touched && controls.transactionType.invalid">
+      </div>
+      <div *ngIf="controls.transactionType.touched && controls.transactionType.invalid">
+        <small class="text-danger" *ngIf="controls.transactionType.errors?.['required']">Transaction Type Required!!!</small>
+      </div>
+      </div>
+      <div class="col">
+      <div class="form-group m-3">
+        <label for="communicationChannel">Enter Communication Channel: </label>
+        <input type="text" class="form-control" formControlName="communicationChannel"
+          [class.is-invalid]="controls.communicationChannel.touched && controls.communicationChannel.invalid">
+      </div>
+      <div *ngIf="controls.communicationChannel.touched && controls.communicationChannel.invalid">
+        <small class="text-danger" *ngIf="controls.communicationChannel.errors?.['required']">Communication Channel Required!!!</small>
+      </div>
+</div>
+</div>
+      <input [disabled]="bankForm.invalid" type="submit" class="bg-accent" value="Add">
+    </form>
+  <!-- </div>
+  <ng-template #error>
+    <p class="alert alert-danger h4 text-center mt-3">{{errorMessage}}</p>
+  </ng-template> -->
+  <div *ngIf="errorMessage">
+    <p class="alert alert-danger h4 text-center mt-3">{{errorMessage}}</p>
+    </div>
+</div>
